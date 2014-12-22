@@ -181,6 +181,13 @@ Add this line right after, like so:
 call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";				//Compile regular functions
 call compile preprocessFileLineNumbers "custom\compiles.sqf";							 //Compile custom compiles
 ```
+Then find  **DZE_BuildOnRoads** and add the following variables after it:
+```
+DZE_noRotate = []; //Objects that cannot be rotated. Ex: DZE_noRotate = ["ItemVault"] (NOTE: The objects magazine classname)
+DZE_vectorDegrees = [0.01, 0.1, 1, 5, 15, 45, 90];
+DZE_curDegree = 45; //Starting rotation angle. //Prefered any value in array above
+DZE_dirWithDegrees = true; //When rotating objects with Q&E, use the custom degrees
+```
 
 **compiles.sqf** can be either found in project folder here on github or you can just create new file and add these lines:
 
