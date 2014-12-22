@@ -16,7 +16,7 @@ if (!_wsDone) then {
 };
 ```
 
-After that, insert this:
+After that code block, insert this:
 ```c++
 _vector = [[0,0,0],[0,0,0]];
 _vecExists = false;
