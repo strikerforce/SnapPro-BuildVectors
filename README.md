@@ -205,6 +205,8 @@ if (!isDedicated) then {
 	build_vectors =                 compile preprocessFileLineNumbers DZE_build_vector_file;
 };
 ```
+**Note:** the fn_selfActions.sqf only has changes to the paths for player_upgrade.sqf & player_buildingDowngrade.sqf
+
 Open your **description.ext** (root of your MPMissions folder), add this to the very bottom:
 ```c++
 #include "custom\snap_pro\snappoints.hpp"
