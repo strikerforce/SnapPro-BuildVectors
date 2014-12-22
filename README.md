@@ -3,6 +3,9 @@ ___
 
 ## *Installation* `ver 1.4.1`
 
+## Server Side
+
+## Mission Side
 Create and add new **compiles.sqf** file (you can reuse an old one if you already have it) and add this to **init.sqf** file:
 
 Find:
