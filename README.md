@@ -74,14 +74,6 @@ if (count _worldspace >= 3) then{
 }; 
 ```
 
-Once that is complete, find this next line:
-```
-_object setVariable ["ObjectID", _idKey, true];
-```
-And place the following after it:
-```
-_object setVariable ["ownerPUID", _ownerPUID, true];
-```
 Now it's time to apply the vector to the object, so find the following line:
 ```
 _object setdir _dir;
