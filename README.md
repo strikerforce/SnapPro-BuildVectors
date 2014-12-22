@@ -7,7 +7,7 @@ ___
 First thing you need to do is make a few edits to your dayz_server.pbo file.
 Start by opening your **server_monitor.sqf**(Remove anything done from P4L installation) which is located in the system folder and find the following code block:
 
-```
+```c++
 if (!_wsDone) then {
 	if (count _worldspace >= 1) then { _dir = _worldspace select 0; };
 	_pos = [getMarkerPos "center",0,4000,10,0,2000,0] call BIS_fnc_findSafePos;
@@ -17,7 +17,7 @@ if (!_wsDone) then {
 ```
 
 After that, insert this:
-```
+```c++
 _vector = [[0,0,0],[0,0,0]];
 _vecExists = false;
 _ownerPUID = "0";	
@@ -75,21 +75,21 @@ if (count _worldspace >= 3) then{
 ```
 
 Now it's time to apply the vector to the object, so find the following line:
-```
+```c++
 _object setdir _dir;
 ```
 And place this after it:
-```
+```c++
 if(_vecExists)then{
 	_object setVectorDirAndUp _vector;
 }; 
 ```
 Last but not least, we need to save the objects direction to a variable. To do that, find:
-```
+```c++
 if (DZE_GodModeBase) then {
 ```
 And place the following above it:
-```
+```c++
 _object setVariable["memDir",_dir,true];
 ```
 
@@ -97,11 +97,11 @@ _object setVariable["memDir",_dir,true];
 The next file we need to edit is the **server_functions.sqf**.
 
 Find the following function:
-```
+```c++
 dayz_objectUID2 = {
 ```
 And replace that code block with:
-```
+```c++
 dayz_objectUID2 = {
 	private["_position","_dir","_key","_element","_vector","_set","_vecCnt","_usedVec"];
 	_dir = _this select 0;
@@ -169,7 +169,7 @@ dayz_objectUID2 = {
 That completes everything server side :)
 
 ## Mission Side
-Create and add new **compiles.sqf** file (you can reuse an old one if you already have it) and add this to **init.sqf** file:
+Create and add new **compiles.sqf** file (you can reuse an old one if you already have it or copy over the new one included in the download) and add this to **init.sqf** file:
 
 Find:
 ```c++
@@ -182,7 +182,7 @@ call compile preprocessFileLineNumbers "\z\addons\dayz_code\init\compiles.sqf";	
 call compile preprocessFileLineNumbers "custom\compiles.sqf";							 //Compile custom compiles
 ```
 Then find  **DZE_BuildOnRoads** and add the following variables after it:
-```
+```c++
 DZE_noRotate = []; //Objects that cannot be rotated. Ex: DZE_noRotate = ["ItemVault"] (NOTE: The objects magazine classname)
 DZE_vectorDegrees = [0.01, 0.1, 1, 5, 15, 45, 90];
 DZE_curDegree = 45; //Starting rotation angle. //Prefered any value in array above
@@ -210,7 +210,7 @@ Open your **description.ext** (root of your MPMissions folder), add this to the 
 #include "custom\snap_pro\snappoints.hpp"
 ```
 
-Copy **snap_pro** folder inside your **custom** folder and you are done. Simple as that!
+Copy the **custom** folder to your mission root and you are done. Simple as that!
 
 ### Infistar Antihack
 ##### Newest Infistar AH (13/07/2014) comes with actions whitelisted by default
